@@ -1,0 +1,22 @@
+jobs:
+    scan:
+      runs-on: ubuntu-latest
+  
+      steps:
+        - name: Checkout Code
+          uses: actions/checkout@v2
+  
+        - name: Install Kubescape
+          run: |
+            wget https://github.com/armosec/kubescape/releases/latest/download/kubescape.sh
+            chmod +x kubescape.sh
+  
+        - name: Run Kubescape Scan
+          run: ./kubescape.sh scan framework nsa -f .
+  
+        - name: Upload Kubescape Results
+          uses: actions/upload-artifact@v2
+          with:
+            name: kubescape-results
+            path: results/
+  
