@@ -16,7 +16,12 @@ jobs:
       - name: Install Kubescape
         run: |
           curl -s https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash
+
+      - name: Add Kubescape to PATH
+        run: |
           echo "PATH=\$PATH:$HOME/.kubescape" >> $GITHUB_ENV
 
       - name: Scan YAML files
-        run: kubescape scan framework nsa *.yaml
+        run: |
+          export PATH=$PATH:$HOME/.kubescape
+          kubescape scan framework nsa *.yaml
