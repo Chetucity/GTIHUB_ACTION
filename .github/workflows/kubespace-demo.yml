@@ -16,4 +16,5 @@ jobs:
       - name: Install Kubescape
         run:  curl -s https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash | which kubescape
 
-
+      - name: chekcing 
+        run:  which kubescape
