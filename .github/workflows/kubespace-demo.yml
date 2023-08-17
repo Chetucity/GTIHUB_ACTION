@@ -16,22 +16,6 @@ jobs:
       - name: Install Kubescape
         run:  curl -s https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash
       
-      - name: Check Kubescape Version
-        run: |
-          export PATH=$PATH:$HOME/.kubescape
-          kubescape version
-
-      - name: Print Debug Information
-        run: |
-          echo "PATH: $PATH"
-          ls -la $HOME/.kubescape
-          export PATH=$PATH:$HOME/.kubescape
-          kubescape version
-      
-      - name: Run Kubescape
-        run: |
-           export PATH=$PATH:$HOME/.kubescape
-           $HOME/.kubescape/kubescape scan framework nsa your_single_yaml_file.yaml
                 
-      # - name: Scan YAML files
-      #   run: kubescape scan framework nsa *.yaml
+      - name: Scan YAML files
+        run: kubescape scan frameworks NSA
