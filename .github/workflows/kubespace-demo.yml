@@ -19,5 +19,11 @@ jobs:
       - name: adding path 
         run:  export PATH=\$PATH:$HOME/.kubescape
 
-      - name: cheking 
+      - name: GOING 
+        run:  cd PATH
+
+      - name: LISTING
+        run:  ls        
+        
+      
         run:  ls
