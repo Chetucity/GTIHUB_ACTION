@@ -1,0 +1,22 @@
+name: Kubescape Scan
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Install Kubescape
+        run: |
+          wget https://github.com/armosec/kubescape/releases/latest/download/kubescape.sh
+          chmod +x kubescape.sh
+
+      - name: Run Kubescape Scan
+        run: kubeescae scan framework nsa *.yaml
