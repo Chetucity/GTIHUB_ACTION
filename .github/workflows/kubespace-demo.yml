@@ -17,5 +17,5 @@ jobs:
       - name: Install Kubescape
         run:  curl -s https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash
       
-      - name: Scan YAML files
+      - name: Scan YAML files checks
         run: kubescape scan framework nsa *.yaml
