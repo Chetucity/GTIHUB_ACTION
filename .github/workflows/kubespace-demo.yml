@@ -15,10 +15,10 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Install Kubescape
-        run:  curl -s https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash
-
-      - name: setting up path
-        run: export PATH=$PATH:/home/runner/.kubescape/bin
+        run: |
+          curl -s https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash
+          sudo mv /usr/local/bin/kubescape /usr/local/bin/kubescape-old
+          sudo mv /home/runner/.kubescape/bin/kubescape /usr/local/bin/
       
       - name: Scan YAML files
         run: kubescape scan framework nsa *.yaml
