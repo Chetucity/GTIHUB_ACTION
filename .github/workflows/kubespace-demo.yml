@@ -1,12 +1,13 @@
-name: Kubescape Scan
+name: Kubescape
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
+  pull_request:  
+    branches: [ main ]
 
 jobs:
-  scan:
+  nsa-security-checks:
     runs-on: ubuntu-latest
 
     steps:
@@ -15,6 +16,6 @@ jobs:
 
       - name: Install Kubescape
         run:  curl -s https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash
-
-      - name: Scan YAML fILE
+      
+      - name: Scan YAML files
         run: kubescape scan framework nsa *.yaml
